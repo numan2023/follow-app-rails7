@@ -1,0 +1,6 @@
+<div class="tweet">
+  <p class = "tweet-text"><%= tweet.text %></p>
+  <div class="tweet-name">
+    <%= link_to  "投稿者：#{tweet.user.name}", user_path(tweet.user)%>
+  </div>
+</div>

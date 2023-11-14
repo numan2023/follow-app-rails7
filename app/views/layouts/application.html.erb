@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FollowAppRails7</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 class="app-name"><a href="/">FollowApp</a></h1>
+      <% if user_signed_in? %>
+        <div class="user-mypage">
+          <%= link_to "#{current_user.name}のマイページ", user_path(current_user), class: "btn" %>
+        </div>
+        <%= link_to "ログアウト", destroy_user_session_path,class: "btn", data: { turbo_method: :delete } %>
+        <%= link_to  "投稿する", new_tweet_path, class: "btn" %>
+      <% end %>
+    </header>
+      <%= yield %>
+  </body>
+</html>

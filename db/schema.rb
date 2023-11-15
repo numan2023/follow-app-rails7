@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_30_114503) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_15_010929) do
+  create_table "relationships", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "following_id"
+    t.bigint "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
   create_table "tweets", charset: "utf8mb4", force: :cascade do |t|
     t.string "text"
     t.bigint "user_id"
